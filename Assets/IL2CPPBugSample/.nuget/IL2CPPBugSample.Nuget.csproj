@@ -1,18 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net471</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Injecter" Version="2.0.0" />
+    <PackageReference Include="MainThreadDispatcher" Version="2.0.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.9" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
   </ItemGroup>
 
   <Target Name="Copy DLLs" AfterTargets="AfterBuild">
-    <Delete Files="$(OutDir)/$(MSBuildProjectName).dll"/>
-    <Delete Files="$(OutDir)/$(MSBuildProjectName).pdb"/>
+    <Delete Files="$(OutDir)/$(MSBuildProjectName).dll" />
+    <Delete Files="$(OutDir)/$(MSBuildProjectName).pdb" />
 
-    <RemoveDir Directories="$(MSBuildProjectDirectory)/../NugetDlls"/>
+    <RemoveDir Directories="$(MSBuildProjectDirectory)/../NugetDlls" />
 
     <CreateItem Include="$(OutDir)/**/*">
       <Output ItemName="AllOutDirFiles" TaskParameter="Include" />
