@@ -20,6 +20,8 @@ namespace IL2CPPBugSample
         [SerializeField] private Text _notWorkingUnitText;
         [SerializeField] private Button _notWorkingArrayButton;
         [SerializeField] private Text _notWorkingArrayText;
+        [SerializeField] private Button _notWorkingBoolButton;
+        [SerializeField] private Text _notWorkingBoolText;
 
         private void Start()
         {
@@ -59,6 +61,19 @@ namespace IL2CPPBugSample
                 catch (Exception e)
                 {
                     await LogMessage(e, _notWorkingArrayText);
+                }
+            });
+
+            _notWorkingBoolButton.onClick.AddListener(async () =>
+            {
+                try
+                {
+                    await _mediator.Send(new NotWorkingBoolRequest()).ConfigureAwait(false);
+                    await _dispatcher.InvokeAsync(() => _notWorkingBoolText.text = "Worked");
+                }
+                catch (Exception e)
+                {
+                    await LogMessage(e, _notWorkingBoolText);
                 }
             });
         }
