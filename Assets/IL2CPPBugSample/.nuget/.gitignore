@@ -1,0 +1,4 @@
+!*.csproj
+# build output
+bin/
+obj/
