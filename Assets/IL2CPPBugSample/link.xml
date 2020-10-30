@@ -1,5 +1,8 @@
 <linker>
 
     <assembly fullname="IL2CPPBugSample" preserve="all" />
+    <assembly fullname="Injecter.Unity" preserve="all" />
+    <assembly fullname="Injecter.Hosting.Unity" preserve="all" />
+    <assembly fullname="MainThreadDispatcher.Unity" preserve="all" />
     
 </linker>
