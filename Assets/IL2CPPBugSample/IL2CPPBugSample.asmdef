@@ -1,3 +1,18 @@
-﻿{
-	"name": "IL2CPPBugSample"
+{
+    "name": "IL2CPPBugSample",
+    "references": [
+        "Injecter.Hosting.Unity",
+        "Injecter.Unity",
+        "MainThreadDispatcher.Unity",
+        "Serilog.Sinks.Unity3D"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
