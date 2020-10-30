@@ -1,0 +1,5 @@
+<linker>
+
+    <assembly fullname="IL2CPPBugSample" preserve="all" />
+    
+</linker>
