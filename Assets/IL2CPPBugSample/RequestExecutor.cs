@@ -5,7 +5,11 @@ using MediatR;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using IL2CPPBugSample.Handlers;
+using MediatR.Pipeline;
 using UnityEngine.UI;
+using UnityEngine.Scripting;
+using System.Collections.Immutable;
 
 namespace IL2CPPBugSample
 {
@@ -22,6 +26,25 @@ namespace IL2CPPBugSample
         [SerializeField] private Text _notWorkingArrayText;
         [SerializeField] private Button _notWorkingBoolButton;
         [SerializeField] private Text _notWorkingBoolText;
+
+        [Preserve]
+        public void Stub()
+        {
+            Inner<NotWorkingUnitRequest, Unit>();
+            Inner<NotWorkingBoolRequest, bool>();
+            Inner<NotWorkingArrayRequest, ImmutableArray<string>>();
+
+            void Inner<TRequest, TResponse>()
+            where TRequest : IRequest<TResponse>
+            {
+                MediatR.Il2Cpp.HandlerStub.MakeStub<TRequest, TResponse>();
+                new RequestPreProcessorBehavior<TRequest, TResponse>(null);
+                new RequestPostProcessorBehavior<TRequest, TResponse>(null);
+                new RequestExceptionProcessorBehavior<TRequest, TResponse>(null);
+                new RequestExceptionActionProcessorBehavior<TRequest, TResponse>(null);
+            }
+        }
+
 
         private void Start()
         {
